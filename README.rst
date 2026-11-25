@@ -47,3 +47,10 @@ Notes
   caches them after the first download (the source catalog is about 160 MB).
   The DP2 query results are cached as FITS files next to each notebook, so
   later runs are faster. To re-run a query, delete its cache file.
+
+License
+-------
+
+This work is licensed under a
+`Creative Commons Attribution 4.0 International License <https://creativecommons.org/licenses/by/4.0/>`_
+(CC BY 4.0). See the ``LICENSE`` file for the full text.
