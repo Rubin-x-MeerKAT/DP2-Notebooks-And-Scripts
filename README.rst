@@ -3,7 +3,10 @@ EDR-DP2-Notebooks
 
 This repository contains Jupyter notebooks that combine the
 `Mining with MeerKAT Early Data Release (EDR) <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/docs/>`_ with the Rubin Observatory LSST Data Preview 2 (DP2).
-They are meant to be run on the Rubin Science Platform (RSP).
+They are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_.
+
+This repository is under active development. Some of the tools here may be
+cleaned up and put into a helper package in the future to streamline the code.
 
 Notebooks
 ---------
@@ -20,8 +23,8 @@ Notebooks
 ``Mining-with-MeerKAT_DP2CoaddFootprint.ipynb``
     Does the same selection, but the footprint is where DP2 ``deep_coadd``
     images actually exist. This is more useful for Early DP2, which does not
-    contain the single epoch images (which will only released in Full DP2 in
-    December 2026).
+    contain the single epoch images (which will only be released in Full DP2
+    in December 2026).
 
     Outputs: ``DP2_coadd_footprint_moc.fits``, ``InDP2Coadd_images_EDR.fits``,
     ``InDP2Coadd_survey_catalog_L_EDR.fits`` and a sky plot,
