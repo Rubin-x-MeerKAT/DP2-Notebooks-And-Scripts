@@ -1,18 +1,22 @@
-DP2-Notebooks-And-Code
-======================
+DP2 Notebooks And Scripts
+=========================
 
 This repository contains Jupyter notebooks and scripts that use the 
-`Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_ API that combine the 
+`Rubin Science Platform (RSP) <https://data.lsst.cloud/>`__ API that combine the 
 `Mining with MeerKAT Early Data Release (EDR) <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/docs/>`_ 
 with Rubin Observatory LSST Data Preview 2 (DP2).
 
-The notebooks are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_.
+Some of the tools in here have more generic uses - e.g., checking which objects
+in a catalog are within the DP2 co-add images; making RGB cut-outs around
+given object postions.
 
 This repository is under active development. Some of the tools here may be
 cleaned up and put into a helper package in the future to streamline the code.
 
 Notebooks
 ---------
+
+The notebooks are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/nb>`__.
 
 ``Mining-with-MeerKAT_DP2Footprint.ipynb``
     Selects the MeerKAT EDR images and L-band source catalog entries that lie
@@ -38,6 +42,18 @@ Notebooks
     around a single radio source. It then fetches DP2 ``deep_coadd`` cutouts
     of the same region, and creates an overlay plot with radio contours
     on top of the RGB optical image.
+
+
+Scripts
+-------
+
+The scripts can be run locally on your machine, so long as you have set up
+the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`__ API access token
+(this can be done from the Settings menu on the RSP, and should be stored as
+a file ``$HOME/.rsp-tap.token``).
+
+ADD SCRIPT DESCRIPTIONS HERE
+
 
 Notes
 -----
