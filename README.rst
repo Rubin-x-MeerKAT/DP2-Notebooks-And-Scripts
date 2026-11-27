@@ -8,7 +8,7 @@ with Rubin Observatory LSST Data Preview 2 (DP2).
 
 Some of the tools in here have more generic uses - e.g., checking which objects
 in a catalog are within the DP2 co-add images; making RGB cut-outs around
-given object postions.
+given object positions.
 
 This repository is under active development. Some of the tools here may be
 cleaned up and put into a helper package in the future to streamline the code.
@@ -88,6 +88,27 @@ of usage and information on arguments and options.
 
        **Fig. 2:** DP2 co-add cutout around some radio sources detected in a MeerKAT
        image, shown as the cyan contours, made by the ``makeDP2CutOut.py`` script.
+
+``getWithinDP2CoaddFootprint.py``
+    Selects the objects in a catalog that lie within the DP2 ``deep_coadd``
+    footprint (the sky where every required band has a coadd), and writes them
+    to a FITS table named ``InDP2Coadd_<catalog name>.fits`` in the current
+    directory. The catalog can be any format astropy can read (e.g., FITS or
+    CSV). The required bands are set with ``-b`` (default ``grz``, or ``any``
+    for a coadd in any band), and the RA and Dec column names (in decimal
+    degrees) with ``--ra-col`` and ``--dec-col`` (defaults ``RADeg`` and
+    ``decDeg``).
+
+    The DP2 coadd patch list and the footprint MOC are cached as FITS files
+    in the current directory. The first run queries the RSP and takes about
+    two minutes.
+
+    *Example*::
+
+        python getWithinDP2CoaddFootprint.py images_EDR.fits --ra-col centre_RADeg --dec-col centre_decDeg -b gri
+
+    This makes a catalog that contains the subset of Mining with MeerKAT EDR MeerKAT
+    pointings that land within the DP2 co-add regions.
 
 Notes
 -----
