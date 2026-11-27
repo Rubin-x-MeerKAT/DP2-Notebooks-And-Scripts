@@ -82,7 +82,7 @@ of usage and information on arguments and options.
     Fig. 2 shows the output from the above (this matches the example in the
     ``Mining-with-MeerKAT_Images_CutOut.ipynb`` notebook).
 
-    .. figure:: figs/contour_example.png
+.. figure:: figs/contour_example.png
    :alt: DP2 co-add cut out around some radio sources detected in a MeerKAT image, shown as the cyan contours, made by the makeDP2CutOut.py script
    :width: 400px
    :align: center
