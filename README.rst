@@ -16,7 +16,7 @@ cleaned up and put into a helper package in the future to streamline the code.
 Notebooks
 ---------
 
-The notebooks are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/nb>`__.
+The notebooks are meant to be run on the `RSP <https://data.lsst.cloud/nb>`__.
 
 ``Mining-with-MeerKAT_DP2Footprint.ipynb``
     Selects the MeerKAT EDR images and L-band source catalog entries that lie
@@ -48,11 +48,27 @@ Scripts
 -------
 
 The scripts can be run locally on your machine, so long as you have set up
-the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`__ API access token
+an `RSP <https://data.lsst.cloud/>`__ API access token
 (this can be done from the Settings menu on the RSP, and should be stored as
 a file ``$HOME/.rsp-tap.token``).
 
-ADD SCRIPT DESCRIPTIONS HERE
+``makeDP2CutOut.py``
+    Makes cut out RGB images (optionally with contours) around the given
+    coordinates. Downloaded FITS images are cached, so repeated runs with
+    the same coords and clip size are faster, if you want to adjust anything.
+
+    Example::
+
+        python makeDP2CutOut.py 326.6608017808119 -3.352257256294713 4 "ACT-CL J2146.6-0321" -z 1.16
+
+    Fig. 1 shows the output from the above.
+
+.. figure:: figs/ACT-CL_J2146p6-0321.png
+   :alt: DP2 co-add cut out around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the
+   ``makeDP2CutOut.py`` script
+
+   Fig. 1: DP2 co-add cut out around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the
+   ``makeDP2CutOut.py`` script.
 
 
 Notes
