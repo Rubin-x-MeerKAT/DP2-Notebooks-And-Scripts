@@ -103,8 +103,9 @@ of usage and information on arguments and options.
     in the current directory. The first run queries the RSP and takes about
     two minutes.
 
-    *Example*::
+    *Example* (the first command downloads the input catalog)::
 
+        wget https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images_EDR.fits
         python getWithinDP2CoaddFootprint.py images_EDR.fits --ra-col centre_RADeg --dec-col centre_decDeg -b gri
 
     This makes a catalog that contains the subset of Mining with MeerKAT EDR
