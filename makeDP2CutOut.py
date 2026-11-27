@@ -39,6 +39,7 @@ from scipy import ndimage
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.path import Path
 
 CACHE_DIR="DP2CutOutCache"
 EDR_URL="https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/"   # trailing slash is important
@@ -87,19 +88,35 @@ def findDP2Coadds(RADeg, decDeg, sizeArcmin, bands, session):
 
     """
 
-    # The TAP service does not support INTERSECTS, so find every patch containing any point of a grid
-    # (spacing <= 3 arcmin, much smaller than a patch) covering the box
-    nGrid=int(np.ceil(sizeArcmin/3)) + 1
-    offsets=np.linspace(-sizeArcmin/2, sizeArcmin/2, nGrid)/60
+    # The TAP service does not support INTERSECTS, and its CONTAINS misses patches whose s_region crosses
+    # RA = 0. So fetch patches whose centres are near the target (a patch is ~11 arcmin across), then
+    # keep those whose outline contains any point of a grid (spacing <= 3 arcmin, much smaller than a
+    # patch) covering the box. Positions are handled as offsets from the target, so RA wrapping is OK.
     cosDec=np.cos(np.radians(decDeg))
-    points=[(RADeg + dx/cosDec, decDeg + dy) for dx in offsets for dy in offsets]
-    contains=" OR ".join("CONTAINS(POINT('ICRS', %.6f, %.6f), s_region) = 1" % (ra % 360, dec) for ra, dec in points)
+    searchDeg=sizeArcmin/60/np.sqrt(2) + 0.2
+    RAHalfWidth=min(searchDeg/max(cosDec, 1e-3), 180)
+    RAMin, RAMax=(RADeg - RAHalfWidth) % 360, (RADeg + RAHalfWidth) % 360
+    RACut=("s_ra BETWEEN %.6f AND %.6f" if RAMin < RAMax else "(s_ra >= %.6f OR s_ra <= %.6f)") % (RAMin, RAMax)
     bandList=", ".join("'%s'" % (b) for b in bands)
-    query="""SELECT DISTINCT lsst_band, lsst_tract, lsst_patch, s_ra, s_dec, access_url
+    query="""SELECT DISTINCT lsst_band, lsst_tract, lsst_patch, s_ra, s_dec, s_region, access_url
              FROM ivoa.ObsCore
              WHERE obs_collection = 'LSST.DP2' AND dataproduct_subtype = 'lsst.deep_coadd'
-             AND lsst_band IN (%s) AND (%s)""" % (bandList, contains)
+             AND lsst_band IN (%s) AND s_dec BETWEEN %.6f AND %.6f AND %s""" \
+             % (bandList, decDeg - searchDeg, decDeg + searchDeg, RACut)
     tab=getTAPService(session).search(query).to_table()
+    if len(tab) == 0:
+        return tab
+
+    nGrid=int(np.ceil(sizeArcmin/3)) + 1
+    offsets=np.linspace(-sizeArcmin/2, sizeArcmin/2, nGrid)/60
+    gridPoints=np.array([(dx, dy) for dx in offsets for dy in offsets])   # (dRA*cosDec, dDec) in deg
+    keep=[]
+    for region in tab['s_region']:
+        coords=np.array(region.split()[2:], dtype = float).reshape(-1, 2)   # "POLYGON ICRS ra1 dec1 ..."
+        dRA=(coords[:, 0] - RADeg + 180) % 360 - 180
+        poly=Path(np.column_stack([dRA*cosDec, coords[:, 1] - decDeg]))
+        keep.append(poly.contains_points(gridPoints).any())
+    tab=tab[np.array(keep, dtype = bool)]
     if len(tab) == 0:
         return tab
 
