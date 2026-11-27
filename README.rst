@@ -1,9 +1,12 @@
-EDR-DP2-Notebooks
-=================
+DP2-Notebooks-And-Code
+======================
 
-This repository contains Jupyter notebooks that combine the
-`Mining with MeerKAT Early Data Release (EDR) <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/docs/>`_ with the Rubin Observatory LSST Data Preview 2 (DP2).
-They are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_.
+This repository contains Jupyter notebooks and scripts that use the 
+`Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_ API that combine the 
+`Mining with MeerKAT Early Data Release (EDR) <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/docs/>`_ 
+with Rubin Observatory LSST Data Preview 2 (DP2).
+
+The notebooks are meant to be run on the `Rubin Science Platform (RSP) <https://data.lsst.cloud/>`_.
 
 This repository is under active development. Some of the tools here may be
 cleaned up and put into a helper package in the future to streamline the code.
