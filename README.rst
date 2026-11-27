@@ -75,7 +75,7 @@ of usage and information on arguments and options.
    Fig. 1: DP2 co-add cut out (4 arcmin on a side) around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the
    ``makeDP2CutOut.py`` script.
 
-    Contour overlay example::
+   Contour overlay example::
 
         python makeDP2CutOut.py 349.3856494 0.1750374 4 "contours example" -c "https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images/pbcorr_trim_img_1672735587_sdp_l0_1024ch_NGC7603.ms_pcalmask-MFS-image.fits"
 
