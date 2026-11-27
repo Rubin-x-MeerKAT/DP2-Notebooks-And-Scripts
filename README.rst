@@ -107,8 +107,10 @@ of usage and information on arguments and options.
 
         python getWithinDP2CoaddFootprint.py images_EDR.fits --ra-col centre_RADeg --dec-col centre_decDeg -b gri
 
-    This makes a catalog that contains the subset of Mining with MeerKAT EDR MeerKAT
-    pointings that land within the DP2 co-add regions.
+    This makes a catalog that contains the subset of Mining with MeerKAT EDR
+    pointings
+    (`images_EDR.fits <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images_EDR.fits>`__)
+    that land within the DP2 co-add regions.
 
 Notes
 -----
