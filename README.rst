@@ -79,7 +79,7 @@ of usage and information on arguments and options.
 
         python makeDP2CutOut.py 349.3856494 0.1750374 4 "contours example" -c "https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images/pbcorr_trim_img_1672735587_sdp_l0_1024ch_NGC7603.ms_pcalmask-MFS-image.fits"
 
-    Output is shown in Fig. 2 below (this matches the example in the ``Mining-with-MeerKAT_Images_CutOut.ipynb`` notebook).
+    Output is shown in Fig. 2 below (the target matches the example in the ``Mining-with-MeerKAT_Images_CutOut.ipynb`` notebook).
 
     .. figure:: figs/contours_example.png
        :alt: DP2 co-add cutout around some radio sources detected in a MeerKAT image, shown as the cyan contours, made by the makeDP2CutOut.py script
