@@ -72,7 +72,7 @@ of usage and information on arguments and options.
        :width: 400px
        :align: center
 
-       Fig. 1: DP2 co-add cutout (4 arcmin on a side) around the z = 1.16 galaxy
+       **Fig. 1:** DP2 co-add cutout (4 arcmin on a side) around the z = 1.16 galaxy
        cluster ACT-CL J2146.6-0321 made by the ``makeDP2CutOut.py`` script.
 
     *Contour overlay example*::
@@ -86,7 +86,7 @@ of usage and information on arguments and options.
        :width: 400px
        :align: center
 
-       Fig. 2: DP2 co-add cutout around some radio sources detected in a MeerKAT
+       **Fig. 2:** DP2 co-add cutout around some radio sources detected in a MeerKAT
        image, shown as the cyan contours, made by the ``makeDP2CutOut.py`` script.
 
 Notes
