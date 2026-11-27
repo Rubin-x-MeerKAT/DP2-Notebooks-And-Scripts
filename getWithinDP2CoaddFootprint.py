@@ -235,7 +235,7 @@ def parseBandsArg(bands):
 if __name__ == "__main__":
 
     parser=argparse.ArgumentParser(description = "Write the subset of a catalog that lies within the DP2 deep_coadd footprint to InDP2Coadd_<catalog name>.fits.")
-    parser.add_argument("catalogFileName", help = "Catalog file (any format astropy can read, e.g. FITS or CSV)")
+    parser.add_argument("catalogFileName", help = "Catalog file or URL (any format astropy can read, e.g. FITS or CSV)")
     parser.add_argument("-b", "--bands", type = parseBandsArg, default = "".join(REQUIRED_BANDS),
                         help = "Bands that must all have coadds (any of ugrizy, e.g. grz or gri), or 'any' for a"
                                " coadd in any band. Default: %s" % ("".join(REQUIRED_BANDS)))
@@ -243,7 +243,8 @@ if __name__ == "__main__":
     parser.add_argument("--dec-col", default = "decDeg", help = "Dec column name, in decimal degrees (default: decDeg)")
     args=parser.parse_args()
 
-    if not os.path.exists(args.catalogFileName):
+    isURL=args.catalogFileName.startswith(("http://", "https://", "ftp://"))
+    if not isURL and not os.path.exists(args.catalogFileName):
         parser.error("catalog file not found: %s" % (args.catalogFileName))
 
     requiredBands=None if args.bands == "any" else args.bands

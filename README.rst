@@ -93,8 +93,8 @@ of usage and information on arguments and options.
     Selects the objects in a catalog that lie within the DP2 ``deep_coadd``
     footprint (the sky where every required band has a coadd), and writes them
     to a FITS table named ``InDP2Coadd_<catalog name>.fits`` in the current
-    directory. The catalog can be any format astropy can read (e.g., FITS or
-    CSV). The required bands are set with ``-b`` (default ``grz``, or ``any``
+    directory. The catalog can be a local file or a URL, in any format astropy
+    can read (e.g., FITS or CSV). The required bands are set with ``-b`` (default ``grz``, or ``any``
     for a coadd in any band), and the RA and Dec column names (in decimal
     degrees) with ``--ra-col`` and ``--dec-col`` (defaults ``RADeg`` and
     ``decDeg``).
@@ -112,6 +112,16 @@ of usage and information on arguments and options.
     pointings
     (`images_EDR.fits <https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images_EDR.fits>`__)
     that land within the DP2 co-add regions.
+
+    *Example reading a catalog from a URL*::
+
+        python getWithinDP2CoaddFootprint.py https://lambda.gsfc.nasa.gov/data/suborbital/ACT/actadv_dr6_cluster_cat/DR6_cluster-catalog_v1.0.fits
+
+    This produces a version of the ACT DR6 galaxy cluster catalog
+    (`Aguena et al. 2026 <https://scixplorer.org/abs/2026OJAp....955863A/abstract>`__)
+    that is within the DP2 footprint, loading the original catalog directly from the URL
+    (note that when using a URL, the original catalog is not cached).
+
 
 Notes
 -----
