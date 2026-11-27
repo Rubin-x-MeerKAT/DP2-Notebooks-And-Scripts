@@ -63,7 +63,7 @@ of usage and information on arguments and options.
 
     Example::
 
-        python makeDP2CutOut.py 326.6608 -3.352 4 "ACT-CL J2146.6-0321" -z 1.16
+        python makeDP2CutOut.py 326.6608 -3.3523 4 "ACT-CL J2146.6-0321" -z 1.16
 
     Fig. 1 shows the output from the above.
 
