@@ -56,37 +56,37 @@ For all scripts you can run them with the ``-h`` flag to see a description
 of usage and information on arguments and options.
 
 ``makeDP2CutOut.py``
-    Makes a cut out RGB image around the given coordinates (optionally
-    with a contour overlay from another image, e.g., radio contours from MeerKAT).
-    Downloaded FITS images are cached, so repeated runs with the same coords
-    and clip size are faster, if you want to adjust anything.
+Makes a cut out RGB image around the given coordinates (optionally
+with a contour overlay from another image, e.g., radio contours from MeerKAT).
+Downloaded FITS images are cached, so repeated runs with the same coords
+and clip size are faster, if you want to adjust anything.
 
-    Example::
+Example::
 
-        python makeDP2CutOut.py 326.6608 -3.3523 4 "ACT-CL J2146.6-0321" -z 1.16
+    python makeDP2CutOut.py 326.6608 -3.3523 4 "ACT-CL J2146.6-0321" -z 1.16
 
-    Fig. 1 shows the output from the above.
+Fig. 1 shows the output from the above.
 
 .. figure:: figs/ACT-CL_J2146p6-0321.png
    :alt: DP2 co-add cut out around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the makeDP2CutOut.py script
    :width: 400px
    :align: center
 
-   Fig. 1: DP2 co-add cut out (4 arcmin on a side) around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the
-   ``makeDP2CutOut.py`` script.
+Fig. 1: DP2 co-add cut out (4 arcmin on a side) around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the
+``makeDP2CutOut.py`` script.
 
-   Contour overlay example::
+Contour overlay example::
 
-        python makeDP2CutOut.py 349.3856494 0.1750374 4 "contours example" -c "https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images/pbcorr_trim_img_1672735587_sdp_l0_1024ch_NGC7603.ms_pcalmask-MFS-image.fits"
+    python makeDP2CutOut.py 349.3856494 0.1750374 4 "contours example" -c "https://extragalactic.phys.wits.ac.za/mining-with-meerkat/EDR/data/images/pbcorr_trim_img_1672735587_sdp_l0_1024ch_NGC7603.ms_pcalmask-MFS-image.fits"
 
-   Fig. 2 shows the output from the above (this matches the example in the ``Mining-with-MeerKAT_Images_CutOut.ipynb`` notebook).
+Fig. 2 shows the output from the above (this matches the example in the ``Mining-with-MeerKAT_Images_CutOut.ipynb`` notebook).
 
 .. figure:: figs/contours_example.png
    :alt: DP2 co-add cut out around some radio sources detected in a MeerKAT image, shown as the cyan contours, made by the makeDP2CutOut.py script
    :width: 400px
    :align: center
 
-   Fig. 2: DP2 co-add cut out around some radio sources detected in a MeerKAT image, shown as the cyan contours, made by the
+Fig. 2: DP2 co-add cut out around some radio sources detected in a MeerKAT image, shown as the cyan contours, made by the
    ``makeDP2CutOut.py`` script.
 
 Notes
