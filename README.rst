@@ -63,12 +63,12 @@ of usage and information on arguments and options.
 
     *Example*::
 
-        python makeDP2CutOut.py 326.6608 -3.3523 4 "ACT-CL J2146.6-0321" -z 1.16
+        python makeDP2CutOut.py 326.6608 -3.3523 4 "ACT-CL J2146.6-0320" -z 1.28
 
     Output is shown in Fig. 1 below.
 
     .. figure:: figs/ACT-CL_J2146p6-0321.png
-       :alt: DP2 co-add cutout around the z = 1.16 galaxy cluster ACT-CL J2146.6-0321 made by the makeDP2CutOut.py script
+       :alt: DP2 co-add cutout around the z = 1.28 galaxy cluster ACT-CL J2146.6-0320 made by the makeDP2CutOut.py script
        :width: 400px
        :align: center
 
