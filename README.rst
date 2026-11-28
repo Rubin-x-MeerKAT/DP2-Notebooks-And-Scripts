@@ -117,11 +117,58 @@ of usage and information on arguments and options.
 
         python getWithinDP2CoaddFootprint.py https://lambda.gsfc.nasa.gov/data/suborbital/ACT/actadv_dr6_cluster_cat/DR6_cluster-catalog_v1.0.fits
 
-    This produces a version of the ACT DR6 galaxy cluster catalog
+    This produces a version of the Atacama Cosmology Telescope (ACT) DR6 galaxy cluster catalog
     (`Aguena et al. 2026 <https://scixplorer.org/abs/2026OJAp....955863A/abstract>`__)
     that is within the DP2 footprint, loading the original catalog directly from the URL
     (note that when using a URL, the original catalog is not cached).
 
+
+The zCluster package
+--------------------
+
+The `zCluster <https://github.com/ACTCollaboration/zCluster>`_ package has been updated to
+use the Rubin data previews. This provides tools that fetch galaxy catalogs around given
+positions, and estimate both galaxy and cluster redshifts through a template fitting
+method (LSST will provide photo-zs at some point; in the meantime, zCluster could be used
+if you need photo-zs for ordinary galaxies).
+
+Note that for the moment you should install zCluster from the GitHub repository, as the
+RubinDP2 catalog retrieval is not in the current version on PyPI. You will need to have
+created the ``$HOME/.rsp-tap.token`` file containing your API key for it to work with the
+Rubin data previews.
+
+The ``zField`` command can be used to fetch catalogs and estimate photo-zs around given
+RA and Dec coordinates, for example::
+
+    zField 349.3856494 0.1750374 -r 0.2 -D RubinDP2 -c DP2Cache -o zFieldResults -T DECaLSDR10_learned_N20
+
+This runs at the RA and Dec coordinates of the "contours example" from above, fetching RubinDP2
+galaxies within 0.2 degrees of this position. The RubinDP2 galaxy photometry catalog is
+cached under the directory ``DP2Cache``, while the ``zFieldResults`` directory contains the catalog
+with the photo-z estimates. The ``-T DECaLSDR10_learned_N20`` selects the best built-in
+template set to use for RubinDP2 (this is a new template set that is not yet documented
+in the papers in which ``zCluster`` is described).
+
+Run ``zField -h`` to see the available options.
+
+The ``zCluster`` command estimates cluster photometric redshifts given a cluster catalog,
+in a similar way to ``zField``.
+
+The routine that fetches the RubinDP2 galaxy catalogs via the RSP API is
+`zCluster.retrievers.RubinDP2Retriever <https://zcluster.readthedocs.io/en/latest/reference.html#zCluster.retrievers.RubinDP2Retriever>`_
+(the docs for ``zCluster`` need some more work).
+
+
+To be added
+-----------
+
+* Add::
+
+    berk_footprint cut -f EDR_footprint.fits DR6_cluster-catalog_v1.0.fits
+
+  and then combine the output with the earlier example to get the ACT DR6 clusters in DP2 and EDR.
+
+* Cross matching with Berk (notebooks, and a one liner, hopefully...)
 
 Notes
 -----
